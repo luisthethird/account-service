@@ -7,6 +7,8 @@ import models.Account
   */
 object AccountService {
 
-  def register(account: Account) = ???
+  def register(account: Account) = {
+    println(account);
+  }
 
 }
