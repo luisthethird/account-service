@@ -1,4 +1,5 @@
 import org.scalatestplus.play._
+import play.api.libs.json.Json
 import play.api.test._
 import play.api.test.Helpers._
 
@@ -42,7 +43,14 @@ class ApplicationSpec extends PlaySpec with OneAppPerTest {
   "AccountController" should {
 
     "return JSON from account page" in {
-      val account = route(app, FakeRequest(GET, "/account")).get
+
+      val data = Json.obj(
+        "id" -> 1234,
+        "name" -> "Pedro the Producer",
+        "region" -> "Ethiopia"
+      )
+
+      val account = route(app, FakeRequest(POST, "/account").withJsonBody(data)).get
 
       status(account) mustBe OK
       contentType(account) mustBe Some("application/json")
