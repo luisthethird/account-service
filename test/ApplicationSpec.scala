@@ -39,4 +39,16 @@ class ApplicationSpec extends PlaySpec with OneAppPerTest {
 
   }
 
+  "AccountController" should {
+
+    "return JSON from account page" in {
+      val account = route(app, FakeRequest(GET, "/account")).get
+
+      status(account) mustBe OK
+      contentType(account) mustBe Some("application/json")
+      //contentAsString(account) must include ("")
+    }
+
+  }
+
 }
