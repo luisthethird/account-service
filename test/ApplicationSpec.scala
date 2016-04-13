@@ -54,7 +54,7 @@ class ApplicationSpec extends PlaySpec with OneAppPerTest {
 
       status(account) mustBe OK
       contentType(account) mustBe Some("application/json")
-      //contentAsString(account) must include ("")
+      contentAsString(account) must be (Json.stringify(data))
     }
 
   }
